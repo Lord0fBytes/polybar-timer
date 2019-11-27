@@ -1,0 +1,10 @@
+[module/jm-timer]
+type=custom/script
+exec=echo Timer: `cat ~/timer.txt`
+interval=1
+label=%output%
+click-left=python3 ~/Scripts/timer.py &
+click-middle=echo 0 > ~/timer.txt
+click-right=kill $(pgrep python3) && echo 5 > ~/timer.txt
+scroll-up=echo $((1+`cat ~/timer.txt`)) > ~/timer.txt
+scroll-down=echo $((`cat ~/timer.txt`-1)) > ~/timer.txt
